@@ -3,7 +3,7 @@ import FS from '@isomorphic-git/lightning-fs'
 import * as git from 'isomorphic-git'
 import http from "isomorphic-git/http/web";
 
-const fs = new FS("browser-working-copy").promises
+const fs = new FS("browser-working-copy")
 
 startUp(Vue, fs, git, http)
 
