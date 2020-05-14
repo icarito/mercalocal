@@ -1,0 +1,10 @@
+.direnv/
+*.log
+*.pyc
+*.swp
+*.swo
+bin/
+dist/
+__pycache__/
+static/node_modules/
+.cache/
