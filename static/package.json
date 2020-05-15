@@ -1,13 +1,17 @@
 {
-  "name": "guit",
+  "name": "intergambio",
   "version": "0.0.1",
-  "description": "Guit - Git User Interface",
+  "description": "Intergambio te doy te llevo",
   "main": "main.js",
   "dependencies": {
     "@isomorphic-git/lightning-fs": "^4.2.2",
+    "gun": "^0.2020.430",
     "isomorphic-git": "^1.4.0",
+    "isomorphic-webcrypto": "^2.3.6",
     "steal": "^2.2.4",
-    "vue": "^2.6.11"
+    "text-encoding": "^0.7.0",
+    "vue": "^2.6.11",
+    "vue-gun": "^0.0.3"
   },
   "steal": {
     "paths": {
@@ -15,6 +19,14 @@
       "isomorphic-git": "node_modules/isomorphic-git/index.umd.min.js",
       "isomorphic-git/http/web": "node_modules/isomorphic-git/http/web/index.umd.js",
       "vue": "node_modules/vue/dist/vue.common.dev.js"
+    },
+    "meta": {
+        "gun/gun": {
+            "format": "global"
+        },
+        "gun/sea": {
+            "format": "global"
+        }
     }
   }
 }
