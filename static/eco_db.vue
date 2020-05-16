@@ -3,11 +3,11 @@
     <h1>MercaLocal</h1>
     <h2>Productos</h2>
     <vue-spreadsheet-lite @update="update_product" :data="data" :header="product_header()"/>
-    <p>{{ productos }}</p>
+    <pre>{{ productos }}</pre>
     <h2>Proveedores</h2>
-    <p>{{ proveedores }}</p>
+    <pre>{{ proveedores }}</pre>
     <h2>Ordenes</h2>
-    <p>{{ ordenes }}</p>
+    <pre>{{ ordenes }}</pre>
     </div>
 </template>
 
@@ -31,7 +31,8 @@ class Component:
         window.model = self
 
     def add_product(self, key, node):
-        Vue.set(self.data, int(key), [node.name, node.price])
+        if node:
+            Vue.set(self.data, int(key), [node.name, node.price])
         Vue.set(self.productos, key, node)
 
     def update_product(self, productos):
@@ -41,8 +42,8 @@ class Component:
             if item:
                 prods[key] = {'name': item[0],
                               'price': item[1]}
-        print(self.productos)
-        self['$gun'].get('productos').put(prods)
+        if prods:
+            self['$gun'].get('productos').put(prods)
 
     def add_provider(self, key, node):
         Vue.set(self.proveedores, key, node)
