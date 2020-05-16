@@ -4,11 +4,13 @@
   "description": "Intergambio te doy te llevo",
   "main": "main.js",
   "dependencies": {
+    "@anydown/vue-spreadsheet-lite": "^0.2.1",
     "@isomorphic-git/lightning-fs": "^4.2.2",
     "gun": "^0.2020.430",
     "isomorphic-git": "^1.4.0",
     "isomorphic-webcrypto": "^2.3.6",
     "steal": "^2.2.4",
+    "steal-css": "^1.3.2",
     "text-encoding": "^0.7.0",
     "vue": "^2.6.11",
     "vue-gun": "^0.0.3"
@@ -20,13 +22,16 @@
       "isomorphic-git/http/web": "node_modules/isomorphic-git/http/web/index.umd.js",
       "vue": "node_modules/vue/dist/vue.common.dev.js"
     },
+    "plugins": [
+      "steal-css"
+    ],
     "meta": {
-        "gun/gun": {
-            "format": "global"
-        },
-        "gun/sea": {
-            "format": "global"
-        }
+      "gun/gun": {
+        "format": "global"
+      },
+      "gun/sea": {
+        "format": "global"
+      }
     }
   }
 }

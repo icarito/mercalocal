@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueSpreadsheetLite from '@anydown/vue-spreadsheet-lite'
 import FS from '@isomorphic-git/lightning-fs'
 import * as git from 'isomorphic-git'
 import http from 'isomorphic-git/http/web'
@@ -13,6 +14,7 @@ Vue.use(VueGun, {
                   'http://trotter.local:8765/gun',
                   'https://super8.alwaysdata.net/gun'])
 })
+Vue.component('vue-spreadsheet-lite', VueSpreadsheetLite)
 
 const fs = new FS("intergambio_fs")
 

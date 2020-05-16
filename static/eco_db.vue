@@ -2,6 +2,7 @@
     <div>
     <h1>MercaLocal</h1>
     <h2>Productos</h2>
+    <vue-spreadsheet-lite @update="update_product" :data="data" :header="product_header()"/>
     <p>{{ productos }}</p>
     <h2>Proveedores</h2>
     <p>{{ proveedores }}</p>
@@ -18,8 +19,9 @@ class Component:
         self.productos = {}
         self.proveedores = {}
         self.ordenes = {}
+        self.data = [['',''] for item in range(10)]
 
-    def MOUNTED(self):
+    def CREATED(self):
         self['$gun'].get('productos').map().on(
             lambda node, key: self.add_product(key, node))
         self['$gun'].get('proveedores').map().on(
@@ -29,7 +31,18 @@ class Component:
         window.model = self
 
     def add_product(self, key, node):
+        Vue.set(self.data, int(key), [node.name, node.price])
         Vue.set(self.productos, key, node)
+
+    def update_product(self, productos):
+        prods = {}
+        for key in range(len(productos)):
+            item = productos[key]
+            if item:
+                prods[key] = {'name': item[0],
+                              'price': item[1]}
+        print(self.productos)
+        self['$gun'].get('productos').put(prods)
 
     def add_provider(self, key, node):
         Vue.set(self.proveedores, key, node)
@@ -37,4 +50,14 @@ class Component:
     def add_order(self, key, node):
         Vue.set(self.proveedores, key, node)
 
+    def product_header(self):
+        return [
+            { 'name': 'Producto', 'width': 400 },
+            { 'name': 'Precio', 'width': 100 }
+        ]
+
 </script>
+
+<style scoped>
+
+</style>
