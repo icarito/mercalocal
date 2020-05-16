@@ -4,11 +4,14 @@ import * as git from 'isomorphic-git'
 import http from 'isomorphic-git/http/web'
 import Gun from 'gun/gun'
 import SEA from 'gun/sea'
+import 'gun/lib/webrtc'
 
 import VueGun from 'vue-gun'
 
 Vue.use(VueGun, {
-    gun: new Gun(['http://tara.local:8765/gun'])
+    gun: new Gun(['http://tara.local:8765/gun',
+                  'http://trotter.local:8765/gun',
+                  'https://super8.alwaysdata.net/gun'])
 })
 
 const fs = new FS("intergambio_fs")
